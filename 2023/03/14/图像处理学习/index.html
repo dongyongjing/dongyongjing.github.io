@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="提要认识数字图像处理简单来说就是对一个二位函数f(x, y)进行计算。这里我们要注意，f(x, y)只是数字图像中的坐标，具体的数值诸如灰度f，强度等并未在坐标中出现。数字图像处理起源于上世纪的报纸行业，用电报打印机采用特殊字体在编码纸带上打印，以及后来的穿孔纸带得到的数字照片。但是以上两个技术都未涉及到对图像的处理。直到后来计算机的出现，才逐渐产生了对图像的处理。在上世纪的空间探索上面，对“徘徊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像处理学习">
+<meta property="og:url" content="http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="东拥瑾的个人博客">
+<meta property="og:description" content="提要认识数字图像处理简单来说就是对一个二位函数f(x, y)进行计算。这里我们要注意，f(x, y)只是数字图像中的坐标，具体的数值诸如灰度f，强度等并未在坐标中出现。数字图像处理起源于上世纪的报纸行业，用电报打印机采用特殊字体在编码纸带上打印，以及后来的穿孔纸带得到的数字照片。但是以上两个技术都未涉及到对图像的处理。直到后来计算机的出现，才逐渐产生了对图像的处理。在上世纪的空间探索上面，对“徘徊">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-14T08:35:52.000Z">
+<meta property="article:modified_time" content="2023-03-27T13:09:35.883Z">
+<meta property="article:author" content="东拥瑾">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>图像处理学习</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/03/11/%E2%80%9Cthird%E2%80%9D/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&text=图像处理学习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&is_video=false&description=图像处理学习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=图像处理学习&body=Check out this article: http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&name=图像处理学习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&t=图像处理学习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">提要</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">认识数字图像处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">数字图像处理实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">数字图像处理步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.4.</span> <span class="toc-text">图像处理系统的组成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">处理基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E8%A7%89%E6%84%9F%E7%9F%A5%E8%A6%81%E7%B4%A0"><span class="toc-number">2.1.</span> <span class="toc-text">视觉感知要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8F%96%E6%A0%B7%E4%B8%8E%E9%87%8F%E5%8C%96"><span class="toc-number">2.2.</span> <span class="toc-text">图像取样与量化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%83%8F%E7%B4%A0%E9%97%B4%E5%9F%BA%E6%9C%AC%E5%85%B3%E7%B3%BB"><span class="toc-number">3.</span> <span class="toc-text">像素间基本关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E9%98%B5%E5%88%97%E5%92%8C%E7%9F%A9%E9%98%B5%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">图像中的阵列和矩阵操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%81%B0%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%92%8C%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2"><span class="toc-number">5.</span> <span class="toc-text">灰度变换和空间滤波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">5.1.</span> <span class="toc-text">背景知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%81%B0%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">一些基本的灰度变换函数</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        图像处理学习
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">东拥瑾</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-03-14T08:35:52.000Z" itemprop="datePublished">2023-03-14</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/study/" rel="tag">study</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="提要"><a href="#提要" class="headerlink" title="提要"></a>提要</h1><h2 id="认识数字图像处理"><a href="#认识数字图像处理" class="headerlink" title="认识数字图像处理"></a>认识数字图像处理</h2><p>简单来说就是对一个二位函数f(x, y)进行计算。这里我们要注意，f(x, y)只是数字图像中的坐标，具体的数值诸如灰度<em>f</em>，强度等并未在坐标中出现。<br>数字图像处理起源于上世纪的报纸行业，用电报打印机采用特殊字体在编码纸带上打印，以及后来的穿孔纸带得到的数字照片。但是以上两个技术都未涉及到对图像的处理。直到后来计算机的出现，才逐渐产生了对图像的处理。<br>在上世纪的空间探索上面，对“徘徊者7号”拍摄的月球图像有了第一次所谓的图像处理，但是当时只是对原图进行了增强和复原。后来的发展延伸到医学领域，资源勘探，以及天文学。这一切都用于图像更好的向人类进行解释。<br>再后来，图像处理发展到解决机器感知的阶段。诸如字符识别、产线检测、指纹处理、血样分类等。如今网络带宽的发展，以及计算机技术的高速进步，为数字图像处理技术提供了前所未有的机会。   </p>
+<h2 id="数字图像处理实例"><a href="#数字图像处理实例" class="headerlink" title="数字图像处理实例"></a>数字图像处理实例</h2><p>我们按照光的频谱段来划分各个的应用层面。<br>首先我们看到伽马射线成像。其主要应用于核医学和天文观测。在医学上，其主要是PET(正电子放射断层)。还有X射线进行医学造影，电路板检测等。紫外光用于荧光显微镜，用于观察微观层面的物体，包括病因检测，断层检测。可见光和红外波段就更加引用广泛了，包括但不限于以上技术。微波频段成像主要用雷达装置来实现。无线电波用于MRI成像。<br>声波也可以成像，在石油和资源勘探领域，其是一种主要方式。包括后来在医学上的超声波检查。<br>计算机也可成像，我们称之为”分形“。  </p>
+<h2 id="数字图像处理步骤"><a href="#数字图像处理步骤" class="headerlink" title="数字图像处理步骤"></a>数字图像处理步骤</h2><p>从图像处理源头出发，我们第一个动作时获取图像，接着会出现以下几种方式：1、图像滤波与增强。2、图像复原。3、彩色图像处理。4、小波与多分辨率处理。5、压缩。6、形态学处理。7、分割。8、表示和描述。9、目标识别。  </p>
+<h2 id="图像处理系统的组成"><a href="#图像处理系统的组成" class="headerlink" title="图像处理系统的组成"></a>图像处理系统的组成</h2><p>当然还是从问题域出发，光的一系列频段进入图像传感器，以网络为主的计算机，上有专业的图像处理软件，或者专业的图像处理硬件。附带有存储为主的硬拷贝，或者大容量存储，以及显示器等。   </p>
+<h1 id="处理基础"><a href="#处理基础" class="headerlink" title="处理基础"></a>处理基础</h1><h2 id="视觉感知要素"><a href="#视觉感知要素" class="headerlink" title="视觉感知要素"></a>视觉感知要素</h2><p>我们人眼成像和小孔成像非常相似。但我们人眼具有亮度适应和辨别功能。这是我们后来可以对灰度图像进行处理，并面向人类解释的基础。但人眼有时会出现视错觉的现象，目前无法解析。对于光和电磁波谱，我们用波长、频率或者能量来描述。公式：$\lambda$ = $\epsilon$ / $\nu$<br>对于如何获取图像，我们将照射能量转为数字图像的关键是传感器，输入能量被传感器检测到，转换为电压，然后再把其数字化。当然传感器的发展经过了单一、条带、阵列等阶段。在图形成像模型当中，我们知道，f(x, y)中装载的值是一个有限值。它与物理成像所辐射的能量呈正相关。但有的时候，其也可为负值，在雷达成像过程中，移向雷达的物体被解释为负，而远离雷达的物体被解释为正。f(x, y)形成可由两个分量组成，其分别为入射分量和反射分量，两个分量的乘积形成了f(x, y)。</p>
+<h2 id="图像取样与量化"><a href="#图像取样与量化" class="headerlink" title="图像取样与量化"></a>图像取样与量化</h2><p>我们对一幅数字图像某一点的坐标值进行捕捉，叫做取样，对某一点的幅值进行数字化，我们叫做量化。<br>我们有三种呈现方式，第一种是类似于柱状图，幅值代表图形的高度，这样比较直观，可以反映坐标和其对应的幅值变化；第二种是灰度图，这种无法直接读出坐标的幅值，只有灰度变化；第三种是以矩阵形式表示，这种比较适合于计算机的图形计算。灰度级数我们通常取成2的指数级。<br>我们同时也发现了一个有趣的现象，当图像从单一个体走向群体时，灰度级往往是减少的，对应的就是对比度增加了。图像内插是我们实现图片放大、旋转、收缩和几何校正的基本步骤，现在基本使用的是双三次内插，诸如商业上的Adobe Photoshop。  </p>
+<h1 id="像素间基本关系"><a href="#像素间基本关系" class="headerlink" title="像素间基本关系"></a>像素间基本关系</h1><p>我们知道像素有相邻像素，各自为水平、垂直、以及对角线上，总共有八个相邻像素。通常有三种邻接方式，第一个是4邻接，第二个是8邻接，最后一个是m邻接。我们定义一幅图像的子集称为区域，与边缘不同，区域周边是闭合的，而边缘有时候不一定闭合。像素间也有距离度量，</p>
+<h1 id="图像中的阵列和矩阵操作"><a href="#图像中的阵列和矩阵操作" class="headerlink" title="图像中的阵列和矩阵操作"></a>图像中的阵列和矩阵操作</h1><p>当我们谈到对图像的处理时，通常是将其视为在像素级上面进行操作，而在像素上面通常是阵列操作。这是有别于矩阵的计算，结果表示为对应位置的处理，而不是平时的矩阵相乘。同时图像也有线性操作和非线性操作，在日常生活中，最为常见的是线性操作。在图像上也可进行算术操作，也即加减乘除。相加操作通常是降噪处理，而减法实现的是对比处理，通常是为了显示图像中某一部分与已知模板之间的差异性。相乘和相除基本是为了校正阴影。也可用于显示特定区域，其他部分为黑。<br>同时我们也要注意图像处理中的集合与逻辑操作。图像的空间操作主要分为三种，对单个像素进行操作；对邻域进行操作；对空间进行变换。从直观来讲，对单个像素做处理，得到的结果通常是灰度的变化，其为线性的，而邻域操作实现了对原图像的模糊处理，空间变换实现了图像的反转，平移，左右镜像等操作。向量和矩阵操作实现了色彩图像的分析处理。图像变换一般在实际的开发中往往不是如上述那样，在空间域展开，而是从空间域到变换域，从变换域再到空间域。充当桥梁的是变换核。我们也要注意到概率论在图像处理当中充当的重要作用。  </p>
+<h1 id="灰度变换和空间滤波"><a href="#灰度变换和空间滤波" class="headerlink" title="灰度变换和空间滤波"></a>灰度变换和空间滤波</h1><h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><p>灰度变换和空间滤波都是在空间域进行的，和在变换域进行处理的图像处理不一样。  </p>
+<h2 id="一些基本的灰度变换函数"><a href="#一些基本的灰度变换函数" class="headerlink" title="一些基本的灰度变换函数"></a>一些基本的灰度变换函数</h2><p>我们可以知道有以下三种方式：1、线性函数(反转和恒等变换)。2、对数函数(对数和反对数变换)。3、幂律函数。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">提要</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">认识数字图像处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.</span> <span class="toc-text">数字图像处理实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">数字图像处理步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.4.</span> <span class="toc-text">图像处理系统的组成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">处理基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E8%A7%89%E6%84%9F%E7%9F%A5%E8%A6%81%E7%B4%A0"><span class="toc-number">2.1.</span> <span class="toc-text">视觉感知要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8F%96%E6%A0%B7%E4%B8%8E%E9%87%8F%E5%8C%96"><span class="toc-number">2.2.</span> <span class="toc-text">图像取样与量化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%83%8F%E7%B4%A0%E9%97%B4%E5%9F%BA%E6%9C%AC%E5%85%B3%E7%B3%BB"><span class="toc-number">3.</span> <span class="toc-text">像素间基本关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%9A%84%E9%98%B5%E5%88%97%E5%92%8C%E7%9F%A9%E9%98%B5%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">图像中的阵列和矩阵操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%81%B0%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%92%8C%E7%A9%BA%E9%97%B4%E6%BB%A4%E6%B3%A2"><span class="toc-number">5.</span> <span class="toc-text">灰度变换和空间滤波</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">5.1.</span> <span class="toc-text">背景知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%81%B0%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">一些基本的灰度变换函数</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&text=图像处理学习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&is_video=false&description=图像处理学习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=图像处理学习&body=Check out this article: http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&title=图像处理学习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&name=图像处理学习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/03/14/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%AD%A6%E4%B9%A0/&t=图像处理学习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    东拥瑾
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
